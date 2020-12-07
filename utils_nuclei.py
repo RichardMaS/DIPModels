@@ -33,11 +33,9 @@ class TrainDataset(utils_image.ImageDataset):
                 tf_args: transformation parameters to augmentation function.
         """
         self.processor = processor
-        tf_args = dict() if tf_args is None else tf_args.copy() # copy over any additional parameters if they exist
+        tf_args = dict() if tf_args is None else tf_args.copy()
         for image_id in os.listdir(image_dir):
-            # find the sample folders
             if os.path.isdir(os.path.join(image_dir, image_id)):
-                # store the file paths of image and mask
                 image_path = os.path.join(image_dir, image_id, "images", image_id + ".png")
                 masks_path = os.path.join(image_dir, image_id, "masks")
                 
